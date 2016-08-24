@@ -1,11 +1,14 @@
 #!/bin/bash
-clientName=$1
-if [ -z $clientName ] ; then
-        echo "Usage: $0 clientName"
+if [ "$#" -ne 2 ] ; then
+        echo "Usage: $0 <clientName> <clientMac>"
         exit 0
 fi
-mkdir ~/crypt-{keys,scripts}
-mkdir ~/.ssh
+
+clientName=$1
+clientMac=$2
+
+mkdir -p ~/crypt-{keys,scripts}
+mkdir -p ~/.ssh
 
 # Generate a random keyfile for $clientName, but only if it doesn't exist yet.
 if [ ! -f ~/crypt-keys/"$clientName".keyfile ] ; then
