@@ -1,4 +1,5 @@
 #!/bin/sh
 sleep 5
-mac="$(ifconfig | grep HWaddr | awk '{ print $NF }')"
-ssh -i /root/.ssh/unlock_rsa -o "UserKnownHostsFile=/root/.ssh/known_hosts ConnectTimeout=100" KEYHOST_ADDRESS "$mac"
+mac="$(cat /sys/class/net/eth0/address)"
+timeout -t 1 haveged -F > /dev/null
+ssh -i /root/.ssh/unlock_rsa -o "UserKnownHostsFile=/root/.ssh/known_hosts" -o "ConnectTimeout=100" KEYHOST_ADDRESS "$mac"
