@@ -19,6 +19,6 @@ fi
 
 . /usr/share/initramfs-tools/hook-functions
 
-cp /etc/initramfs-tools/root/.ssh/unlock_rsa "${DESTDIR}/root/.ssh/"
-cp /etc/initramfs-tools/root/.ssh/unlock_rsa.pub "${DESTDIR}/root/.ssh/"
-cp /etc/initramfs-tools/root/.ssh/known_hosts "${DESTDIR}/root/.ssh/"
+copy_file key /etc/initramfs-tools/root/.ssh/unlock_rsa /root/.ssh/
+copy_file key /etc/initramfs-tools/root/.ssh/unlock_rsa.pub /root/.ssh/
+copy_file key /etc/initramfs-tools/root/.ssh/known_hosts /root/.ssh/
